@@ -69,6 +69,7 @@ ENV HOME /home/nobody
 
 # Add application
 WORKDIR /var/www/html
+COPY --chown=nobody . /var/www/html/
 
 # Expose the port nginx is reachable on
 EXPOSE 8080
