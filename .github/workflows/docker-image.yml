@@ -30,4 +30,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag johnny00joe/appvendas-backend:$(date +%s)
     - name: Docker push
-      run: docker push ${{secrets.DOCKER_USER}}/appvendas-backend
+      run: docker push ${{secrets.DOCKER_USER}}/appvendas-backend:$(date +%s)
