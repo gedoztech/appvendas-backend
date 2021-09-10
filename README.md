@@ -2,6 +2,6 @@
 
 Este repositório faz parte do seguinte projeto: https://github.com/johnny00joe/appvendas
 
-# Tecnologias:
+# Tecnologias
 
 PHP, Lumen, Docker, Alpine, Nginx, GitHub Actions, AWS Cloud.
