@@ -13,6 +13,26 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+//Managers
+$router->group(['prefix' => 'managers'], function () use ($router) {
+    $router->get('/', 'ManagerController@index');
+    $router->get('/{id}', 'ManagerController@show');
+});
+
+//Sellers
+$router->group(['prefix' => 'sellers'], function () use ($router) {
+    $router->get('/', 'SellerController@index');
+    $router->get('/{id}', 'SellerController@show');
+    $router->post('/create', 'SellerController@store');
+    $router->put('/{id}', 'SellerController@update');
+    $router->delete('/{id}', 'SellerController@destroy');
+});
+
+//Sales
+$router->group(['prefix' => 'sales'], function () use ($router) {
+    $router->get('/', 'SaleController@index');
+    $router->get('/{id}', 'SaleController@show');
+    $router->post('/create', 'SaleController@store');
+    $router->put('/{id}', 'SaleController@update');
+    $router->delete('/{id}', 'SaleController@destroy');
 });

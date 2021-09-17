@@ -1,0 +1,727 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API App Vendas",
+        "description": "API App Vendas",
+        "contact": {
+            "email": "this_is_just_a_test"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "App Vendas"
+        }
+    ],
+    "paths": {
+        "/managers": {
+            "get": {
+                "tags": [
+                    "Managers"
+                ],
+                "summary": "Get list of managers",
+                "description": "Returns list of managers",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "data": [
+                                            {
+                                                "codigo": 1,
+                                                "email": "this_is_just_a_test",
+                                                "data_criacao": "2021-09-14T13:31:52.000000Z"
+                                            },
+                                            {
+                                                "codigo": 2,
+                                                "email": "this_is_just_a_test2",
+                                                "data_criacao": "2021-09-14T13:32:52.000000Z"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/managers/{id}": {
+            "get": {
+                "tags": [
+                    "Managers"
+                ],
+                "summary": "Get manager by id",
+                "description": "Returns specified manager",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "data": {
+                                            "codigo": 1,
+                                            "nome": "Test",
+                                            "email": "this_is_just_a_test",
+                                            "data_criacao": "2021-09-14T13:31:52.000000Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/sales": {
+            "get": {
+                "tags": [
+                    "Sales"
+                ],
+                "summary": "Get list of sales",
+                "description": "Returns list of sales",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/sales/{id}": {
+            "get": {
+                "tags": [
+                    "Sales"
+                ],
+                "summary": "Get sale by id",
+                "description": "Returns specified sale",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "data": {
+                                            "codigo": 1,
+                                            "sale": "Test",
+                                            "preco": "315000.00",
+                                            "comissao": "10234.90",
+                                            "data_criacao": "2021-09-14T13:31:52.000000Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Sales"
+                ],
+                "summary": "Update sale by id",
+                "description": "Update specified sale",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the sale",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "seller_id",
+                        "in": "query",
+                        "description": "Id of the seller",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "Price of the sale",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "9988.77"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "data": {
+                                            "codigo": 1,
+                                            "seller_id": 1,
+                                            "preco": 199100.28,
+                                            "data_criacao": "2021-09-14T13:31:52.000000Z"
+                                        },
+                                        "message": "Updated successfully"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Updated Successfully"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Sales"
+                ],
+                "summary": "Delete sale by id",
+                "description": "Delete specified sale",
+                "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the sale",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "message": "Deleted successfully"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Deleted Successfully"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/sales/create": {
+            "post": {
+                "tags": [
+                    "Sales"
+                ],
+                "summary": "Create new sale",
+                "description": "Create new sale",
+                "operationId": "store",
+                "parameters": [
+                    {
+                        "name": "seller_id",
+                        "in": "query",
+                        "description": "Id of the seller",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "Price of the sale",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1000.55"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "data": {
+                                            "codigo": 1,
+                                            "seller": "Test",
+                                            "preco": "456000.89",
+                                            "comissao": "71000.32",
+                                            "data_criacao": "2021-09-14T13:31:52.000000Z"
+                                        },
+                                        "message": "Created successfully"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created Successfully"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/sellers": {
+            "get": {
+                "tags": [
+                    "Sellers"
+                ],
+                "summary": "Get list of sellers",
+                "description": "Returns list of sellers",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/sellers/{id}": {
+            "get": {
+                "tags": [
+                    "Sellers"
+                ],
+                "summary": "Get seller by id",
+                "description": "Returns specified seller",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "data": {
+                                            "codigo": 1,
+                                            "nome": "Test",
+                                            "email": "this_is_just_a_test",
+                                            "data_criacao": "2021-09-14T13:31:52.000000Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Sellers"
+                ],
+                "summary": "Update seller by id",
+                "description": "Update specified seller",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the seller",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name of the seller",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Bill Gates"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email address of the seller",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user@user.com"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "data": {
+                                            "codigo": 1,
+                                            "nome": "Test",
+                                            "email": "this_is_just_a_test",
+                                            "data_criacao": "2021-09-14T13:31:52.000000Z"
+                                        },
+                                        "message": "Updated successfully"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Updated Successfully"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Sellers"
+                ],
+                "summary": "Delete seller by id",
+                "description": "Delete specified seller",
+                "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the seller",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "message": "Deleted successfully"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Deleted Successfully"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/sellers/create": {
+            "post": {
+                "tags": [
+                    "Sellers"
+                ],
+                "summary": "Create new seller",
+                "description": "Create new seller",
+                "operationId": "store",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name of the seller",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Steve Jobs"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email address of the seller",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user@user.com"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "The response message",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "description": "The response data",
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object",
+                                    "example": {
+                                        "data": {
+                                            "codigo": 1,
+                                            "nome": "Test",
+                                            "email": "this_is_just_a_test",
+                                            "data_criacao": "2021-09-14T13:31:52.000000Z"
+                                        },
+                                        "message": "Created successfully"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created Successfully"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        }
+    }
+}
