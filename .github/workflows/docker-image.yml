@@ -28,9 +28,9 @@ jobs:
     
     - name: Set env variables
       run: | 
-        sed -i 's;APP_ENV__VAR;${APP_ENV}/g' .env
-        sed -i 's;APP_DEBUG__VAR;${APP_DEBUG}/g' .env
-        sed -i 's;APP_URL__VAR;${APP_URL}/g' .env
+        sed -i 's;APP_ENV__VAR;${APP_ENV};g' .env
+        sed -i 's;APP_DEBUG__VAR;${APP_DEBUG};g' .env
+        sed -i 's;APP_URL__VAR;${APP_URL};g' .env
       
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
