@@ -45,9 +45,6 @@ jobs:
     
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-      
-    - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
     - name: Set env variables
       run: | 
@@ -58,6 +55,12 @@ jobs:
         sed -i 's;DB_USERNAME__VAR;${DB_USERNAME};g' .env
         sed -i 's;DB_PASSWORD__VAR;${DB_PASSWORD};g' .env
         sed -i 's;DB_DATABASE__VAR;${DB_DATABASE};g' .env
+      
+    - name: Install Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      
+    - name: Generate swagger docs
+      run: php artisan swagger-lume:generate
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -85,8 +88,7 @@ jobs:
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
         
     - name: Download task def
-      run: |
-        aws ecs describe-task-definition --task-definition appvendas --query taskDefinition > task-definition.json
+      run: aws ecs describe-task-definition --task-definition appvendas --query taskDefinition > task-definition.json
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
