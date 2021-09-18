@@ -53,7 +53,7 @@ jobs:
         sed -i 's;APP_URL__VAR;${{ secrets.APP_URL }};g' .env
         sed -i 's;DB_HOST__VAR;${{ secrets.DB_HOST }};g' .env
         sed -i 's;DB_USERNAME__VAR;${{ secrets.DB_USERNAME }};g' .env
-        sed -i 's;DB_PASSWORD__VAR;${{ secretsDB_PASSWORD }};g' .env
+        sed -i 's;DB_PASSWORD__VAR;${{ secrets.DB_PASSWORD }};g' .env
         sed -i 's;DB_DATABASE__VAR;${{ secrets.DB_DATABASE }};g' .env
       
     - name: Install Dependencies
