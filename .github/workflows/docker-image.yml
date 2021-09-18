@@ -29,7 +29,7 @@ jobs:
     - name: Set env variables
       run: |
         sed -i 's;APP_ENV__VAR;${{ secrets.APP_ENV }};g' .env
-        sed -i 's;APP_DEBUG__VAR;${{ secrets.APP_DEBUG};g' .env
+        sed -i 's;APP_DEBUG__VAR;${{ secrets.APP_DEBUG }};g' .env
         sed -i 's;APP_URL__VAR;${{ secrets.APP_URL }};g' .env
         sed -i 's;DB_HOST__VAR;${{ secrets.DB_HOST }};g' .env
         sed -i 's;DB_USERNAME__VAR;${{ secrets.DB_USERNAME }};g' .env
