@@ -47,7 +47,7 @@ jobs:
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
     - name: Set env variables
-      run: | 
+      run: |
         sed -i 's;APP_ENV__VAR;${{ secrets.APP_ENV }};g' .env
         sed -i 's;APP_DEBUG__VAR;${{ secrets.APP_DEBUG};g' .env
         sed -i 's;APP_URL__VAR;${{ secrets.APP_URL }};g' .env
