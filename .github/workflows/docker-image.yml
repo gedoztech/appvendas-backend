@@ -28,13 +28,13 @@ jobs:
     
     - name: Set env variables
       run: | 
-        sed -i 's;APP_ENV__VAR;${APP_ENV};g' .env
-        sed -i 's;APP_DEBUG__VAR;${APP_DEBUG};g' .env
-        sed -i 's;APP_URL__VAR;${APP_URL};g' .env
-        sed -i 's;DB_HOST__VAR;${DB_HOST};g' .env
-        sed -i 's;DB_USERNAME__VAR;${DB_USERNAME};g' .env
-        sed -i 's;DB_PASSWORD__VAR;${DB_PASSWORD};g' .env
-        sed -i 's;DB_DATABASE__VAR;${DB_DATABASE};g' .env
+        sed -i 's;APP_ENV__VAR;${{ secrets.APP_ENV }};g' .env
+        sed -i 's;APP_DEBUG__VAR;${{ secrets.APP_DEBUG};g' .env
+        sed -i 's;APP_URL__VAR;${{ secrets.APP_URL }};g' .env
+        sed -i 's;DB_HOST__VAR;${{ secrets.DB_HOST }};g' .env
+        sed -i 's;DB_USERNAME__VAR;${{ secrets.DB_USERNAME }};g' .env
+        sed -i 's;DB_PASSWORD__VAR;${{ secretsDB_PASSWORD }};g' .env
+        sed -i 's;DB_DATABASE__VAR;${{ secrets.DB_DATABASE }};g' .env
       
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
